@@ -12,13 +12,11 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { ResgiterComponent } from './login/resgiter.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ResgiterComponent,
-
   ],
   imports: [
     BrowserModule,
