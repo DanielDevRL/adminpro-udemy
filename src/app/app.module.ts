@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -12,6 +13,10 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { ResgiterComponent } from './login/resgiter.component';
 
+
+// servicios
+import { ServiceModule } from './services/service.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +27,8 @@ import { ResgiterComponent } from './login/resgiter.component';
     BrowserModule,
     APP_ROUTES,
     PagesModule,
-    FormsModule
+    FormsModule,
+    ServiceModule
   ],
   providers: [],
   bootstrap: [AppComponent]
