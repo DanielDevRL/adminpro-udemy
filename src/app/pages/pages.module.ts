@@ -15,11 +15,14 @@ import { PAGES_ROUTES } from '../pages/pages.routes';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProgressComponent } from './progress/progress.component';
 import { Graficas1Component } from './graficas1/graficas1.component';
+import { PromesasComponent } from './promesas/promesas.component';
 
 // Temporal
 import { IncrementadorComponent } from '../components/incrementador/incrementador.component';
 import { GraficoDonaComponent } from '../components/grafico-dona/grafico-dona.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
+
 
 
 @NgModule({
@@ -30,8 +33,10 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
         PagesComponent,
         IncrementadorComponent,
         GraficoDonaComponent,
-        AccountSettingsComponent
-    ],
+        AccountSettingsComponent,
+        PromesasComponent,
+        RxjsComponent,
+        ],
     exports: [
         DashboardComponent,
         ProgressComponent,

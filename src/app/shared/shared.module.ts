@@ -7,9 +7,6 @@ import { NopagefoundComponent } from './nopagefound/nopagefound.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { Router, RouterModule } from '@angular/router';
 
-
-
-
 @NgModule({
     imports: [
         RouterModule,
