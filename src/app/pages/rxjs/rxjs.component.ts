@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { retry } from 'rxjs/operators';
-
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Observable, Subscriber, Subscription } from 'rxjs';
+import { retry, map, filter } from 'rxjs/operators';
 
 
 @Component({
@@ -9,34 +8,13 @@ import { retry } from 'rxjs/operators';
   templateUrl: './rxjs.component.html',
   styles: []
 })
-export class RxjsComponent implements OnInit {
+export class RxjsComponent implements OnInit, OnDestroy {
+
+  subscription: Subscription;
 
   constructor() {
 
-    let obs = new Observable(observer => {
-
-      let contador = 0;
-      let intervarlo = setInterval(() => {
-
-        contador += 1;
-        observer.next( contador );
-
-        if (contador === 3) {
-          clearInterval(intervarlo);
-          observer.complete();
-        }
-
-        if ( contador === 2) {
-          // clearInterval(intervarlo);
-          observer.error('Peye');
-        }
-
-      }, 1000);
-
-    });
-    obs.pipe(
-      retry(2)
-     ).
+   this.subscription = this.regresaObservable().
       subscribe(
       numero =>  console.log('Subs', numero),
       error => console.error('error', error),
@@ -47,6 +25,54 @@ export class RxjsComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+  regresaObservable(): Observable<any> {
+
+    return new Observable((observer: Subscriber<any>) => {
+
+      let contador = 0;
+      const intervarlo = setInterval(() => {
+
+        contador ++;
+
+      const salida = {
+        valor: contador
+      };
+
+
+        observer.next( salida );
+
+        // if (contador === 3) {
+        //   clearInterval(intervarlo);
+        //   observer.complete();
+        // }
+
+        // if ( contador === 2) {
+        //   clearInterval(intervarlo);
+        //   observer.error('Peye');
+        // }
+
+      }, 1000);
+
+    }).pipe(
+      map( resp => resp.valor),
+      filter((valor, index) => {
+      if ( (valor % 2) === 1 ) {
+          // impar
+          return true;
+      } else {
+        // par
+        return false;
+      }
+
+      })
+    );
+
   }
 
 }
