@@ -17,11 +17,14 @@ import { ResgiterComponent } from './login/resgiter.component';
 // servicios
 import { ServiceModule } from './services/service.module';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ResgiterComponent,
+
   ],
   imports: [
     BrowserModule,
