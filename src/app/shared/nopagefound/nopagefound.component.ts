@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+declare function init_plugins();
 @Component({
   selector: 'app-nopagefound',
   templateUrl: './nopagefound.component.html',
@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NopagefoundComponent implements OnInit {
 
+
   constructor() { }
 
   ngOnInit() {
+    init_plugins();
   }
 
 }
