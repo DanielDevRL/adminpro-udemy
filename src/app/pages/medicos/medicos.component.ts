@@ -10,16 +10,32 @@ declare var swal: any;
 export class MedicosComponent implements OnInit {
 
   medicos: Medico[] = [];
-
+  desde: number = 0;
+  totalRegistro: number = 0;
   constructor(public _medicoService: MedicoService) { }
 
   ngOnInit() {
     this.cargarMedicos();
   }
 
+  cambiarDesde(valor: number) {
+    let desde = this.desde + valor;
+      if (desde >= this.totalRegistro) {
+        return;
+      }
+      if (desde < 0) {
+        return;
+      }
+      this.desde += valor;
+      this.cargarMedicos();
+  }
+
 cargarMedicos() {
-  this._medicoService.cargarMedicos()
-    .subscribe(medicos => this.medicos = medicos);
+  this._medicoService.cargarMedicos(this.desde)
+    .subscribe(medicos => {
+       this.medicos = medicos;
+       this.totalRegistro = this._medicoService.totalMedicos;
+      });
 }
 
 buscarMedico(termino: string) {
@@ -61,3 +77,5 @@ borrarMedico(medico: Medico) {
 }
 
 }
+
+

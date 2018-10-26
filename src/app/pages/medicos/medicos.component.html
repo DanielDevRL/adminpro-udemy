@@ -8,7 +8,7 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row animated fadeIn">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
@@ -19,7 +19,7 @@
                   </button>
                 </div>
 
-                <h3 class="card-title">Medicos Registrados (<small>{{_medicoService.totalMedicos}}</small>)</h3>
+                <h3 class="card-title">Medicos Registrados (<small>{{totalRegistro}}</small>)</h3>
 
                 <table class="table table-hover">
                     <thead>
@@ -52,7 +52,8 @@
                         </tr>
                     </tbody>
                 </table>
-
+                <button (click)="cambiarDesde(-5)" class="btn btn-secondary">Anterionres</button>
+                <button (click)="cambiarDesde(5)" class="btn btn-secondary">Siguientes</button>
             </div>
         </div>
     </div>
