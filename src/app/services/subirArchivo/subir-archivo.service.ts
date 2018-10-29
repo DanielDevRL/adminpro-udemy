@@ -25,13 +25,13 @@ export class SubirArchivoService {
 
           if (xhr.status === 200) {
 
-            console.log('Imagen Subida');
+
 
             resolve(JSON.parse(xhr.response));
 
           } else {
 
-            console.log('Fallo la subida');
+
             reject(xhr.response);
 
           }
